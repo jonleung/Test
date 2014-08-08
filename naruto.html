@@ -1,0 +1,32 @@
+<html>
+<head>
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script>
+	  function kimonoCallback(data) {
+
+	  	var mangas = data.results.naruto_manga;
+
+	  	for(var i=0; i<mangas.length; i++) {
+	  		var manga = mangas[i];
+	  		var title = manga.title.text;
+	  		var link = manga.title.href;
+
+	  		$("body").append("<a href='" + link+ "'>" + title+"</a><br>");
+	  	}
+	    // do something with the data
+	    // please make sure the scope of this function is global
+	  }
+
+	  $.ajax({
+	    "url":"https://www.kimonolabs.com/api/bia6lmha?apikey=0iy6PzfIeJbKNhQvUUdUZsxJsNq3lAeE&callback=kimonoCallback",
+	    "crossDomain":true,
+	    "dataType":"jsonp"
+	});
+	</script>
+
+</head>
+<body>
+	<h1>Naruto Comics</h1>
+</body>
+</html>
+
